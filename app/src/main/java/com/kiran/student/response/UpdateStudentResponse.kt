@@ -1,4 +1,5 @@
 package com.kiran.student.response
 
-class UpdateStudentResponse {
-}
+data class UpdateStudentResponse (
+    val success:Boolean?=null
+)

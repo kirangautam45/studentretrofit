@@ -21,7 +21,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-class StudentAdapter (
+class
+StudentAdapter (
     private val context: Context,
     private val lstStudents: MutableList<Student>
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {

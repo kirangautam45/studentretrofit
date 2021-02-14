@@ -40,14 +40,14 @@ class StudentRepository : MyApiRequest() {
             )
         }
     }
-    // update student
-  /*  suspend fun updateStudent(id: String): UpdateStudentResponse {
+     //update student
+  suspend fun updateStudent(id: String): UpdateStudentResponse {
 return apiRequest {
     studentAPI.updateStudent(
         ServiceBuilder.token!!,id
     )
 }
     }
-*/
+
 
 }

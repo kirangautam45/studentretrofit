@@ -29,9 +29,11 @@ interface StudentAPI {
         @Header("Authorization") token: String,
         @Path ("id") id : String
     ):Response<DeleteStudentResponse>
-   /* @Update( "student/")
+
+    // student update //
+   @PUT("student/{id}")
     suspend fun updateStudent(
         @Header("Authorization") token: String,
         @Path("id")id: String
-    ):Response<UpdateStudentResponse>*/
+    ):Response<UpdateStudentResponse>
 }

@@ -5,10 +5,8 @@ import com.kiran.student.api.ServiceBuilder
 import com.kiran.student.api.StudentAPI
 import com.kiran.student.api.UserAPI
 import com.kiran.student.entity.Student
-import com.kiran.student.response.AddStudentResponse
-import com.kiran.student.response.DeleteStudentResponse
-import com.kiran.student.response.GetAllStudentResponse
-import com.kiran.student.response.UpdateStudentResponse
+import com.kiran.student.response.*
+import okhttp3.MultipartBody
 
 class StudentRepository : MyApiRequest() {
     private val studentAPI =
@@ -47,7 +45,11 @@ return apiRequest {
         ServiceBuilder.token!!,id
     )
 }
+  }
+
+    suspend fun uploadImage(id: String, body: MultipartBody.Part): ImageResponse {
+        return apiRequest {
+            studentAPI.uploadImage(ServiceBuilder.token!!, id, body)
+        }
     }
-
-
 }

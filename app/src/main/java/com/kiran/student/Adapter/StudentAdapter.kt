@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.kiran.student.R
+import com.kiran.student.api.ServiceBuilder
 import com.kiran.student.entity.Student
 import com.kiran.student.repository.StudentRepository
 import com.kiran.student.ui.UpdateStudentActivity
@@ -27,6 +30,7 @@ StudentAdapter (
     private val lstStudents: MutableList<Student>
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
     class StudentViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val image:ImageView=view.findViewById(R.id.image)
         val tvFname: TextView = view.findViewById(R.id.tvFullName)
         val tvaddress: TextView = view.findViewById(R.id.tvaddress)
         val tvAge: TextView = view.findViewById(R.id.tvAge)
@@ -46,6 +50,15 @@ StudentAdapter (
         holder.tvaddress.text =student.address
         holder.tvgender.text=student.gender
         holder.tvAge.text = student.age.toString()
+
+        val imagePath = "${ServiceBuilder.loadImagePath()}" + "${student.photo}"
+        if (!student.photo.equals("no-photo.jpg")) {
+            Glide.with(context)
+                .load(imagePath)
+                .fitCenter()
+                .into(holder.image)
+
+        }
 
         holder.btnUpdate.setOnClickListener {
             val intent = Intent(context, UpdateStudentActivity::class.java)
@@ -104,3 +117,6 @@ StudentAdapter (
         return lstStudents.size
     }
 }
+
+
+

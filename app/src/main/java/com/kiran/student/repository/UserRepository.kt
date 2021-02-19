@@ -24,4 +24,5 @@ class UserRepository :
         }
     }
     //dao goes here
+
 }
